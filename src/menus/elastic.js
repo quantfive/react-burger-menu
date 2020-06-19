@@ -17,18 +17,20 @@ const styles = {
     }
   },
 
-  morphShape(isOpen, width, right) {
+  morphShape(isOpen, width, right, top, bottom) {
     return {
       position: 'absolute',
-      width: MORPH_SHAPE_WIDTH,
-      height: '100%',
+      width: (top || bottom) ? '100%' : MORPH_SHAPE_WIDTH,
+      height: (!top && !bottom) ? '100%' : MORPH_SHAPE_WIDTH,
       right: right ? 'inherit' : 0,
       left: right ? 0 : 'inherit',
       MozTransform: right ? 'rotateY(180deg)' : '',
       MsTransform: right ? 'rotateY(180deg)' : '',
       OTransform: right ? 'rotateY(180deg)' : '',
       WebkitTransform: right ? 'rotateY(180deg)' : '',
-      transform: right ? 'rotateY(180deg)' : ''
+      transform: right ? 'rotateY(180deg)' : '',
+      bottom: bottom ? 'initial' : 0,
+      top: top ? 'initial' : 0,
     };
   },
 

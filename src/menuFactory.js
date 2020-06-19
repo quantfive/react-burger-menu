@@ -163,7 +163,7 @@ export default styles => {
     getStyle(style, index) {
       const { width } = this.props;
       const formattedWidth = typeof width !== 'string' ? `${width}px` : width;
-      return style(this.state.isOpen, formattedWidth, this.props.right, index);
+      return style(this.state.isOpen, formattedWidth, this.props.right, this.props.top, this.props.bottom, index);
     }
 
     listenForClose(e) {
@@ -367,6 +367,8 @@ export default styles => {
         ? PropTypes.string.isRequired
         : PropTypes.string,
     right: PropTypes.bool,
+    top: PropTypes.bool,
+    bottom: PropTypes.bool,
     styles: PropTypes.object,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
